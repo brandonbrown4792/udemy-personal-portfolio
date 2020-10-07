@@ -81,6 +81,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
+        # To use Postgres, you must install psycop2-binary for it to work (pipenv install psycopg2-binary)
         # Note: You must create the database first. Unlike Rails, Django does not create the database for you
         # You must go create the database in the postgres command line using CREATE DATABASE <database_name>
         # Access the postgres command line with psql -d postgres (database option set to postgres database)
