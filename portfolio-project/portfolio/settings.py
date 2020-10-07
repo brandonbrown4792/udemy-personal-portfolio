@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,8 +80,23 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # Note: You must create the database first. Unlike Rails, Django does not create the database for you
+        # You must go create the database in the postgres command line using CREATE DATABASE <database_name>
+        # Access the postgres command line with psql -d postgres (database option set to postgres database)
+       
+        # To hide credentials, store in .env file.
+        # Access credentials by installing python-dotenv
+        # Import os
+        # Import load_dotenv from dotenv
+        # Run load_dotenv()
+        # Access environment variables by using os.getenv('<Environment variable name>')
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST':'localhost',
+        'PORT': '5432',
     }
 }
 
